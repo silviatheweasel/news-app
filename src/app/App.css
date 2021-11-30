@@ -25,7 +25,7 @@ h1 {
 .previewGalary {
   width: 60%;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   margin: 0 auto;
   column-gap: 20px;
   row-gap: 20px;
@@ -101,4 +101,26 @@ h1 {
 
 .fullArticleTextWrapper {
   padding: 30px 0 50px 0;
+}
+
+@media only screen and (max-width: 1024px) {
+  .fullArticleInnerWrapper {
+    width: 100%;
+  }
+  .previewGalary {
+    width: 95%;
+  }
+  .fullArticleTextWrapper {
+    width: 95%;
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (max-width: 390px) {
+  .fullArticleWrapper {
+    height: 700px;
+  }
+  .articleCard {
+    min-height: 320px;
+  }
 }
