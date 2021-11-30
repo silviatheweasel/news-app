@@ -1,0 +1,73 @@
+.App {
+  width: 100%;
+  margin: 0;
+  padding: 30px 0;
+  background-color: #f4e1e1;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 50px;
+  color: #151d3a;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 45px;
+}
+
+.loadingMsg {
+  text-align: center;
+}
+
+.previewGalary {
+  width: 60%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  margin: 0 auto;
+  column-gap: 20px;
+  row-gap: 20px;
+}
+
+.articleCard {
+  padding: 0;
+  border-radius: 21px;
+  border: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  min-height: 520px;
+  cursor: pointer;
+}
+
+.articleCard:hover .previewContentWrapper {
+  background-color: #151d3a;
+}
+
+.articleCard:hover .previewTitle, 
+.articleCard:hover .previewCopy {
+  color: white;
+}
+
+.articlePreviewImg {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 20px 20px 0 0;
+}
+
+.previewContentWrapper {
+  padding: 20px;
+  flex-grow: 2;
+  border-radius: 0 0 20px 20px;
+}
+
+.previewTitle {
+  font-size: 26px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  letter-spacing: -2px;
+  color: #151d3a;
+}
+
+.previewCopy {
+  font-size: 15px;
+  line-height: 25px;
+  color: #444040;
+}
