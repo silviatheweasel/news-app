@@ -1,7 +1,8 @@
-export const ArticlePreviewCard = ({ article }) => {
+export const ArticlePreviewCard = ({ article, handleClick }) => {
     return (
     <button 
         className="articleCard"
+        onClick={handleClick}
         >
         <img
             src={article.image}
