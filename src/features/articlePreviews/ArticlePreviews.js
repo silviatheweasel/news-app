@@ -3,6 +3,7 @@ import { useEffect } from "react";
 
 import { loadArticlePreviews, selectAllArticles, selectIsLoading } from "./articlePreviewsSlice"; 
 import { ArticlePreviewCard } from '../../components/ArticlePreviewCard';
+import { loadCurrentArticle } from '../currentArticle/currentArticleSlice';
 
 export const ArticlePreviews = () => {
     const allArticles = useSelector(selectAllArticles);
@@ -10,6 +11,11 @@ export const ArticlePreviews = () => {
     const dispatch = useDispatch();
 
     useEffect(() => dispatch(loadArticlePreviews()), [dispatch]);
+
+    const handleClick = (id) => {
+        dispatch(loadCurrentArticle(id));
+        window.scrollTo(0,0);
+    }
 
     if (isLoading) return (<p className="loadingMsg">Loading...</p>);
 
@@ -20,6 +26,7 @@ export const ArticlePreviews = () => {
                 article={article}
                 key={index}
                 articleData={article}
+                handleClick={() => handleClick(article.id)}
                 />))}
         </div>)
 
