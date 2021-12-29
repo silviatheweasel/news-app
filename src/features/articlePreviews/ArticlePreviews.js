@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { loadArticlePreviews, selectAllArticles, selectIsLoading } from "./articlePreviewsSlice"; 
 import { ArticlePreviewCard } from '../../components/ArticlePreviewCard';
 import { loadCurrentArticle } from '../currentArticle/currentArticleSlice';
+import { loadComments } from '../currentComments/currentCommentsSlice';
 
 export const ArticlePreviews = () => {
     const allArticles = useSelector(selectAllArticles);
@@ -14,6 +15,7 @@ export const ArticlePreviews = () => {
 
     const handleClick = (id) => {
         dispatch(loadCurrentArticle(id));
+        dispatch(loadComments(id));
         window.scrollTo(0,0);
     }
 

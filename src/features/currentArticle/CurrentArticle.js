@@ -1,24 +1,48 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
-import { selectCurrentArticle, selectIsArticleLoading } from "./currentArticleSlice";
+import { selectCurrentArticle, loadCurrentArticle } from "./currentArticleSlice";
+import { loadComments } from "../currentComments/currentCommentsSlice";
 import { FullArticle } from "../../components/FullArticle";
+import { selectAllArticles } from "../articlePreviews/articlePreviewsSlice";
 
 export const CurrentArticle = () => {
     const currentArticle = useSelector(selectCurrentArticle);
-    const isLoading = useSelector(selectIsArticleLoading);
+    const allArticles = useSelector(selectAllArticles);
 
-    if (isLoading) {
-        return (<div className="articlePlaceHolder"></div>);
-    } else if (!currentArticle) {
-        return null;
+    // const isLoading = useSelector(selectIsArticleLoading);
+    const dispatch = useDispatch();
+
+    const handleClick = (id) => {
+        dispatch(loadCurrentArticle(id));
+        dispatch(loadComments(id));
     }
 
-    if (currentArticle) {
-        return (
-            <div
-                className="fullArticleWrapper"
-            >
-                <FullArticle article={currentArticle} />
-            </div>)
-    }
+    // if (isLoading) {
+    //     return (<div className="articlePlaceHolder"></div>);
+    // } else if (!currentArticle) {
+    //     return null;
+    // }
+
+    return (<div
+        className="fullArticleWrapper"
+    >
+        {(currentArticle && currentArticle.id > 1) && 
+        <button
+            onClick={() => handleClick(parseInt(currentArticle.id) - 1)}
+            className="navBtn prevBtn"
+                >Last
+        </button>}
+        {/* {isLoading && <div className="articlePlaceHolder"></div>} */}
+        {currentArticle && <>
+            <FullArticle 
+                article={currentArticle} 
+            />
+            </>}
+        {(currentArticle && currentArticle.id < allArticles.length) && 
+            <button
+                onClick={() => handleClick(parseInt(currentArticle.id) + 1)}
+                className="navBtn nextBtn"
+                    >Next
+            </button>}
+    </div>)
 }
