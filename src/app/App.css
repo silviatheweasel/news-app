@@ -97,7 +97,7 @@ h1 {
   margin: 0 auto;
 }
 
-.commentsWrapper {
+.commentsWrapper, .commentForm {
   width: 60%;
   margin: 0 auto;
   padding-bottom: 40px;
@@ -160,6 +160,22 @@ h1 {
 .commentText {
   margin-top: 5px;
   color: #444040;
+}
+
+.commentFormTitle {
+  font-size: 1.3em;
+}
+
+.commentInput {
+  border: 1px solid #151d3a;
+  border-radius: 4px;
+  font-size: 16px;
+  padding: 5px;
+  margin-right: 20px;
+}
+
+.commentInput[name="comment"] {
+  width: 60%;
 }
 
 @media only screen and (max-width: 1024px) {

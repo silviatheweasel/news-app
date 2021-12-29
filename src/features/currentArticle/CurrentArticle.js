@@ -1,16 +1,15 @@
 import { useSelector, useDispatch } from "react-redux";
 
-import { selectCurrentArticle, selectIsArticleLoading, loadCurrentArticle } from "./currentArticleSlice";
-import { loadComments, selectCurrentComments } from "../currentComments/currentCommentsSlice";
+import { selectCurrentArticle, loadCurrentArticle } from "./currentArticleSlice";
+import { loadComments } from "../currentComments/currentCommentsSlice";
 import { FullArticle } from "../../components/FullArticle";
-import { CurrentComments } from "../currentComments/CurrentComments";
 import { selectAllArticles } from "../articlePreviews/articlePreviewsSlice";
 
 export const CurrentArticle = () => {
     const currentArticle = useSelector(selectCurrentArticle);
     const allArticles = useSelector(selectAllArticles);
 
-    const isLoading = useSelector(selectIsArticleLoading);
+    // const isLoading = useSelector(selectIsArticleLoading);
     const dispatch = useDispatch();
 
     const handleClick = (id) => {

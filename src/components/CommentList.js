@@ -1,15 +1,4 @@
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { loadComments } from "../features/currentComments/currentCommentsSlice";
-
-export const CommentList = ({comments, currentArticle }) => {
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        const fetchData = setInterval(() => dispatch(loadComments(currentArticle.id)), 2000);
-        return () => clearInterval(fetchData);
-    }, [currentArticle]);
-
+export const CommentList = ({comments }) => {
     return (
     <div className="commentsWrapper">
         <h2 className="commentTitle">Comments</h2>

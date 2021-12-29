@@ -1,24 +1,4 @@
-import { useState } from "react";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-
-import { sendComment } from "../features/currentComments/currentCommentsSlice";
-
-export const CommentForm = ({ currentArticle }) => {
-    const [input, setInput] = useState({comment: "", userName: "", articleId: ""});
-
-    const handleInputChange = ({target}) => {
-        setInput((prev) => ({ ...prev, [target.name]: target.value}));
-    }
-
-    useEffect(() => setInput((prev) => ({ ...prev, articleId: currentArticle.id})), [currentArticle]);
-
-    const dispatch = useDispatch();
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        dispatch(sendComment(input));
-        setInput({comment: "", userName: "", articleId: currentArticle.id});
-    }
+export const CommentForm = ({ handleInputChange, handleSubmit, input }) => {
 
     return (
         <form className="commentForm">
