@@ -1,4 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
 
 import { selectCurrentArticle, loadCurrentArticle } from "./currentArticleSlice";
 import { loadComments } from "../currentComments/currentCommentsSlice";
@@ -16,6 +17,8 @@ export const CurrentArticle = () => {
         dispatch(loadCurrentArticle(id));
         dispatch(loadComments(id));
     }
+
+    // useEffect(() => loadCurrentArticle(), [])
 
     // if (isLoading) {
     //     return (<div className="articlePlaceHolder"></div>);

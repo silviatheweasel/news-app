@@ -14,7 +14,7 @@ export const CurrentComments = () => {
 
     useEffect(() => {
         if (currentArticle) {
-            const fetchData = setInterval(() => dispatch(loadComments(currentArticle.id)), 2000);
+            const fetchData = setInterval(() => dispatch(loadComments(currentArticle.id)), 1500);
             return () => clearInterval(fetchData);
         }
     }, [currentArticle, dispatch]);
@@ -23,6 +23,7 @@ export const CurrentComments = () => {
 
     const handleInputChange = ({target}) => {
         setInput((prev) => ({ ...prev, [target.name]: target.value}));
+        setShowWarning(false);
     }
 
     useEffect(() => {
@@ -31,9 +32,15 @@ export const CurrentComments = () => {
         }
     }, [currentArticle]);
 
+    const [showWarning, setShowWarning] = useState(false);
+
     const handleSubmit = (event) => {
         event.preventDefault();
-        dispatch(sendComment(input));
+        if (input.comment && input.userName) {
+            dispatch(sendComment(input));
+        } else {
+            setShowWarning(true);
+        }
         setInput({comment: "", userName: "", articleId: currentArticle.id});
     }
 
@@ -50,6 +57,7 @@ export const CurrentComments = () => {
             handleInputChange={handleInputChange}
             handleSubmit={handleSubmit}
             input={input}
+            showWarning={showWarning}
             />
     </div>)
 }

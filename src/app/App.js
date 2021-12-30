@@ -6,7 +6,10 @@ import { CurrentComments } from "../features/currentComments/CurrentComments";
 function App() {
   return (
     <div className="App">
-      <div className="currenArticleWrapper">
+      <div 
+        className="currenArticleWrapper"
+
+        >
         <CurrentArticle />
         <CurrentComments />
       </div>
