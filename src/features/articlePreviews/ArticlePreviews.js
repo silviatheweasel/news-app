@@ -22,14 +22,16 @@ export const ArticlePreviews = () => {
     if (isLoading) return (<p className="loadingMsg">Loading...</p>);
 
     return (
-    <div className="previewGalary">
-        {allArticles.map((article, index) => (
-            <ArticlePreviewCard 
-                article={article}
-                key={index}
-                articleData={article}
-                handleClick={() => handleClick(article.id)}
-                />))}
-        </div>)
-
+        <section>
+            <h1>All Articles</h1>
+            <div className="previewGalary">
+                {allArticles.map((article, index) => (
+                    <ArticlePreviewCard 
+                        article={article}
+                        key={index}
+                        articleData={article}
+                        handleClick={() => handleClick(article.id)}
+                        />))}
+            </div>)
+        </section>)
 }
