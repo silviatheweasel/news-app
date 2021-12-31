@@ -9,6 +9,10 @@
   background-color: #f4e1e1;
 }
 
+a {
+  text-decoration: none;
+}
+
 h1 {
   text-align: center;
   padding: 50px 0;

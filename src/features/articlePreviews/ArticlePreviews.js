@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from "react";
+import { Outlet, Link } from 'react-router-dom';
 
 import { loadArticlePreviews, selectAllArticles, selectIsLoading } from "./articlePreviewsSlice"; 
 import { ArticlePreviewCard } from '../../components/ArticlePreviewCard';
@@ -23,7 +24,12 @@ export const ArticlePreviews = () => {
 
     return (
         <section>
-            <h1>All Articles</h1>
+            <Outlet />
+            <Link 
+                to="/articles"
+                >
+                <h1>All Articles</h1>
+            </Link>
             <div className="previewGalary">
                 {allArticles.map((article, index) => (
                     <ArticlePreviewCard 

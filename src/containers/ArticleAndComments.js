@@ -36,15 +36,17 @@ export const ArticleAndComments = () => {
         dispatch(loadComments(idToDisplay));
       }
     }
-    
+
     return (
-        <article 
-            className="currenArticleWrapper"
-            onTouchStart={handleTouchStart}
-            onTouchEnd={handleTouchEnd}
-        >
-        <CurrentArticle />
-        <CurrentComments />
-      </article>
+        <>
+            <article 
+                className="currenArticleWrapper"
+                onTouchStart={handleTouchStart}
+                onTouchEnd={handleTouchEnd}
+            >
+            <CurrentArticle />
+            <CurrentComments />
+            </article>
+        </>
     )
 }
