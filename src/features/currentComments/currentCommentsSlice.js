@@ -7,23 +7,6 @@ export const loadComments = createAsyncThunk(
         const data = await fetch(endpoint);
         const comments = await data.json();
         return comments;
-        
-        // const commentsEndpoint = "https://61a4e5c24c822c0017041f89.mockapi.io/articles/" + articleId + "/comments";
-        // const reactionsEndpoint = "https://61a4e5c24c822c0017041f89.mockapi.io/articles/" + articleId + "/reactions";
-        // const commentsData = await fetch(commentsEndpoint);
-        // const comments = await commentsData.json();
-        // const reactionsData = await fetch(reactionsEndpoint);
-        // const reactions = await reactionsData.json();
-        // for (let i = 0; i < comments.length; i++) {
-        //     comments[i].reactions = [];
-        //     for (let j = 0; j < reactions.length; j++) {
-        //         if (comments[i].commentId === reactions[j].commentId) {
-        //             comments[i].reactions.push(reactions[j].reaction);
-        //         }
-        //     }
-        //     // return comments[i];
-        // }
-        // return comments;
     }
 )
 
@@ -65,8 +48,8 @@ export const loadReactions = createAsyncThunk(
         const jsonData = await data.json();
         let reactions = {};
         const commentIds = [...new Set(jsonData.map(data => data.commentId))];
-        commentIds.map(id => reactions[id] = []);
-        jsonData.forEach(data => reactions[data.commentId].push(data.reaction));
+        commentIds.map(id => reactions[id] = {like: 0, dislike: 0});
+        jsonData.forEach(data => reactions[data.commentId][data.reaction] ++);
         return reactions;
     }
 )

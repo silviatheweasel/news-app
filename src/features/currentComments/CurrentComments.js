@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 
-import { selectCurrentComments, loadComments, sendComment } from "./currentCommentsSlice";
+import { selectCurrentComments, loadComments, sendComment, selectCurrentReactions } from "./currentCommentsSlice";
 import { selectCurrentArticle } from "../currentArticle/currentArticleSlice";
 
 import { CommentList } from "../../components/CommentList";
@@ -9,7 +9,9 @@ import { CommentForm } from "../../components/CommentForm";
 
 export const CurrentComments = () => {
     const currentComments = useSelector(selectCurrentComments);
-    const currentArticle = useSelector(selectCurrentArticle)
+    const currentArticle = useSelector(selectCurrentArticle);
+    const currentReactions = useSelector(selectCurrentReactions);
+
     const dispatch = useDispatch();
 
     // useEffect(() => {
@@ -52,7 +54,9 @@ export const CurrentComments = () => {
     <div className="commentSection">
         <CommentList 
             comments={currentComments} 
-            />
+            reactions={currentReactions}
+            >
+        </CommentList>
         <CommentForm 
             handleInputChange={handleInputChange}
             handleSubmit={handleSubmit}

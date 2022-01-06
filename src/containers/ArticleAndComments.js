@@ -1,11 +1,13 @@
 import { useSelector, useDispatch } from "react-redux";
+import { useParams } from "react-router";
+import { useEffect } from "react";
 
 import { CurrentArticle } from "../features/currentArticle/CurrentArticle";
 import { CurrentComments } from "../features/currentComments/CurrentComments";
 
 import { selectAllArticles } from "../features/articlePreviews/articlePreviewsSlice";
 import { selectCurrentArticle, loadCurrentArticle } from "../features/currentArticle/currentArticleSlice";
-import { loadComments } from "../features/currentComments/currentCommentsSlice";
+import { loadComments, loadReactions, selectCurrentReactions } from "../features/currentComments/currentCommentsSlice";
 
 
 export const ArticleAndComments = () => {
@@ -13,6 +15,13 @@ export const ArticleAndComments = () => {
     const currentArticle = useSelector(selectCurrentArticle);
     const allArticles = useSelector(selectAllArticles);
   
+    const { id } = useParams();
+    useEffect(() => {
+        dispatch(loadCurrentArticle(id));
+        dispatch(loadComments(id));
+        dispatch(loadReactions(id));
+    }, [id, dispatch]);
+
     let touchStartX = 0;
     let touchEndX = 0;
   
@@ -38,15 +47,13 @@ export const ArticleAndComments = () => {
     }
 
     return (
-        <>
-            <article 
+        <article 
                 className="currenArticleWrapper"
                 onTouchStart={handleTouchStart}
                 onTouchEnd={handleTouchEnd}
             >
             <CurrentArticle />
             <CurrentComments />
-            </article>
-        </>
+        </article>
     )
 }

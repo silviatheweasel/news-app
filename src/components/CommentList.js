@@ -1,4 +1,6 @@
-export const CommentList = ({comments }) => {
+import { CommentReactions } from "./CommentReactions";
+
+export const CommentList = ({comments, reactions }) => {
     return (
     <div className="commentsWrapper">
         <h2 className="commentTitle">Comments</h2>
@@ -8,6 +10,10 @@ export const CommentList = ({comments }) => {
                     className="comment" 
                     key={index}>
                         <p className="userName">{comment.user}</p>
+                        <CommentReactions 
+                            reactionByComment={reactions[comment.commentId]}
+                            />
+                        {/* {reactions[comment.commentId] && <span>{reactions[comment.commentId].like}</span>} */}
                         <p className="commentText">{comment.text}</p>
                     </li>))}
             </ul>
