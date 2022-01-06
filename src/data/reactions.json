@@ -1,10 +1,14 @@
 [
     {
+        "reactionId": "1",
         "commentId": "1639071085",
-        "reaction": "like"
+        "reaction": "like", 
+        "articleId": "5"
     },
     {
+        "reactionId": "2",
         "commentId": "1639071085",
-        "reaction": "dislike"
+        "reaction": "dislike",
+        "articleId": "5"
     }
 ]

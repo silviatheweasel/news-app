@@ -12,12 +12,12 @@ export const CurrentComments = () => {
     const currentArticle = useSelector(selectCurrentArticle)
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        if (currentArticle) {
-            const fetchData = setInterval(() => dispatch(loadComments(currentArticle.id)), 1500);
-            return () => clearInterval(fetchData);
-        }
-    }, [currentArticle, dispatch]);
+    // useEffect(() => {
+    //     if (currentArticle) {
+    //         const fetchData = setInterval(() => dispatch(loadComments(currentArticle.id)), 1500);
+    //         return () => clearInterval(fetchData);
+    //     }
+    // }, [currentArticle, dispatch]);
 
     const [input, setInput] = useState({comment: "", userName: "", articleId: ""});
 

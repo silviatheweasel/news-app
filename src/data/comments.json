@@ -1,6 +1,5 @@
 [
     {
-     "id": "1",
      "articleId": "5",
      "text": "Congratulations Kamala.",
      "user": "Amy",
@@ -8,7 +7,6 @@
      "commentId": "1639071085"
     },
     {
-     "id": "2",
      "articleId": "5",
      "text": "Wow, very cool.",
      "user": "Jeff",
@@ -16,7 +14,6 @@
      "commentId": "1639071134"
     },
     {
-     "id": "3",
      "articleId": "7",
      "text": "Butterflies are so awesome!!!",
      "user": "Ben",
@@ -24,7 +21,6 @@
      "commentId": "1612891885"
     },
     {
-     "id": "4",
      "articleId": "2",
      "text": "Sad, I love my LG phone :(",
      "user": "Judy",

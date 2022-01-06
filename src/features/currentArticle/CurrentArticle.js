@@ -18,7 +18,7 @@ export const CurrentArticle = () => {
     useEffect(() => {
         dispatch(loadCurrentArticle(id));
         dispatch(loadComments(id));
-    }, [id]);
+    }, [id, dispatch]);
 
     // if (isLoading) {
     //     return (<div className="articlePlaceHolder"></div>);
