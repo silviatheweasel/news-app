@@ -7,7 +7,7 @@ import { CurrentComments } from "../features/currentComments/CurrentComments";
 
 import { selectAllArticles } from "../features/articlePreviews/articlePreviewsSlice";
 import { selectCurrentArticle, loadCurrentArticle } from "../features/currentArticle/currentArticleSlice";
-import { loadComments, loadReactions, selectCurrentReactions } from "../features/currentComments/currentCommentsSlice";
+import { loadComments, loadReactions } from "../features/currentComments/currentCommentsSlice";
 
 
 export const ArticleAndComments = () => {

@@ -15,9 +15,10 @@ export const sendComment = createAsyncThunk(
     async (input) => {
         const {comment, userName, articleId} = input;
         const currentTime = Date.now().toString();
-        const endpoint = "https://61a4e5c24c822c0017041f89.mockapi.io/articles/" + articleId + "/comments"
+        const endpoint = "https://61a4e5c24c822c0017041f89.mockapi.io/articles/" + articleId + "/comments";
         try {
-            const config = {
+            const config = 
+            {
                 method: "post",
                 headers: {
                     'Accept': 'application/json',
@@ -51,6 +52,34 @@ export const loadReactions = createAsyncThunk(
         commentIds.map(id => reactions[id] = {like: 0, dislike: 0});
         jsonData.forEach(data => reactions[data.commentId][data.reaction] ++);
         return reactions;
+    }
+)
+
+export const sendReaction = createAsyncThunk(
+    "currentComments/sendReaction",
+    async (payload) => {
+        const { articleId, commentId, reaction } = payload;
+        const endpoint = "https://61a4e5c24c822c0017041f89.mockapi.io/articles/" + articleId + "/reactions";
+        try {
+            const config = 
+            {
+                method: "post",
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    "articleId": articleId,
+                    "commentId": commentId,
+                    "reaction": reaction
+                })
+            }
+            const response = await fetch(endpoint, config);
+            const reactions = await response.json();
+            return reactions;
+        } catch(error) {
+            console.log(error);
+        }
     }
 )
 

@@ -16,7 +16,7 @@ export const CurrentComments = () => {
 
     // useEffect(() => {
     //     if (currentArticle) {
-    //         const fetchData = setInterval(() => dispatch(loadComments(currentArticle.id)), 1500);
+    //         const fetchData = setInterval(() => dispatch(loadComments(currentArticle.id)), 5000);
     //         return () => clearInterval(fetchData);
     //     }
     // }, [currentArticle, dispatch]);
@@ -40,6 +40,9 @@ export const CurrentComments = () => {
         event.preventDefault();
         if (input.comment && input.userName) {
             dispatch(sendComment(input));
+            setTimeout(() => {
+                dispatch(loadComments(currentArticle.id))
+            }, 500);
         } else {
             setShowWarning(true);
         }

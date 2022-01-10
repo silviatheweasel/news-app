@@ -202,6 +202,10 @@ h1 {
   padding-bottom: 100px;
 }
 
+.reaction-btn {
+  cursor: pointer;
+}
+
 @media only screen and (max-width: 1024px) {
   .fullArticleInnerWrapper {
     width: 100%;
