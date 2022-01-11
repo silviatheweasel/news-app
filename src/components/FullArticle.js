@@ -10,14 +10,14 @@ export const FullArticle = ({ article }) => {
             }}
         ></img>
         <div className="fullArticleTextWrapper">
-            <h2
+            <h1
                 className="fullArticleTitle"
             >{article.title}
-            </h2>
-            <p
-                className="fullArticleText"
-            >{article.fullText}
-            </p>
+            </h1>
+            <div
+                className="fullArticleText" 
+                dangerouslySetInnerHTML={{__html: article.fullText}} 
+                />
         </div>
     </div>)
 
