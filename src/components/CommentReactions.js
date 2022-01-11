@@ -18,8 +18,8 @@ export const CommentReactions = ({ reactionByComment, comment, updateReaction })
 
 
     return (
-        <span>
-            <span>
+        <span className="reactionsWrapper">
+            <span className="reactionContainer">
                 <i 
                     className="far fa-thumbs-up reaction-btn"
                     id="like"
@@ -28,7 +28,7 @@ export const CommentReactions = ({ reactionByComment, comment, updateReaction })
                 </i>
                 <span>{likeCount}</span>
             </span>
-            <span>
+            <span className="reactionContainer">
                 <i 
                     className="far fa-thumbs-down reaction-btn"
                     id="dislike"

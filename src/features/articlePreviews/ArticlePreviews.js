@@ -28,7 +28,7 @@ export const ArticlePreviews = () => {
             <Link 
                 to="/articles"
                 >
-                <h1>All Articles</h1>
+                <h1 className="siteTitle">All Articles</h1>
             </Link>
             <div className="previewGalary">
                 {allArticles.map((article, index) => (
@@ -38,6 +38,6 @@ export const ArticlePreviews = () => {
                         articleData={article}
                         handleClick={() => handleClick(article.id)}
                         />))}
-            </div>)
+            </div>
         </section>)
 }
