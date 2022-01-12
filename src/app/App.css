@@ -221,6 +221,10 @@ a {
   padding: 5px;
 }
 
+.warningMsg {
+  color: red;
+}
+
 @media only screen and (max-width: 1024px) {
   .fullArticleInnerWrapper {
     width: 100%;

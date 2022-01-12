@@ -11,6 +11,9 @@ export const CommentForm = ({ handleInputChange, handleSubmit, input, showWarnin
                 value={input.comment}
                 autoComplete="off"
                 onChange={handleInputChange}
+                style={{
+                    borderColor: showWarning ? "red" : "black"
+                }}
                 >
             </input>
             <input
@@ -21,6 +24,9 @@ export const CommentForm = ({ handleInputChange, handleSubmit, input, showWarnin
                 autoComplete="off"
                 value={input.userName}
                 onChange={handleInputChange}
+                style={{
+                    borderColor: showWarning ? "red" : "black"
+                }}
             ></input>
             <input 
                 type="submit"

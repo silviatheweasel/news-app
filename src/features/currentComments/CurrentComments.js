@@ -43,10 +43,10 @@ export const CurrentComments = () => {
             setTimeout(() => {
                 dispatch(loadComments(currentArticle.id))
             }, 500);
+            setInput({comment: "", userName: "", articleId: currentArticle.id});
         } else {
             setShowWarning(true);
         }
-        setInput({comment: "", userName: "", articleId: currentArticle.id});
     }
 
     if (!currentArticle) {
