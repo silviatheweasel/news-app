@@ -121,6 +121,15 @@ a {
   padding: 30px 0 50px 0;
 }
 
+.articleInfo {
+  margin-bottom: 30px;
+  color: #444040;
+}
+
+.clockIcon {
+  margin-right: 5px;
+}
+
 .navBtn {
   position: absolute;
   background-color:  #f4e1e1;

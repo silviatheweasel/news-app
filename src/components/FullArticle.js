@@ -1,3 +1,5 @@
+import { getTimeDiff } from "../utilities/getTimeDiff"
+
 export const FullArticle = ({ article }) => {
     return (
     <div className="fullArticleInnerWrapper">
@@ -14,6 +16,14 @@ export const FullArticle = ({ article }) => {
                 className="fullArticleTitle"
             >{article.title}
             </h1>
+            <div className="articleInfo">
+                <p>
+                    <i className="far fa-clock clockIcon"></i>
+                    {getTimeDiff(article.time * 1000)}
+                </p>
+                {article.author && 
+                    <p>By {article.author}</p>}
+            </div>
             <div
                 className="fullArticleText" 
                 dangerouslySetInnerHTML={{__html: article.fullText}} 
