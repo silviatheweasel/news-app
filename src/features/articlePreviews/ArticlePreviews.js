@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from "react";
+import { Outlet, Link } from 'react-router-dom';
 
 import { loadArticlePreviews, selectAllArticles, selectIsLoading } from "./articlePreviewsSlice"; 
 import { ArticlePreviewCard } from '../../components/ArticlePreviewCard';
@@ -22,14 +23,21 @@ export const ArticlePreviews = () => {
     if (isLoading) return (<p className="loadingMsg">Loading...</p>);
 
     return (
-    <div className="previewGalary">
-        {allArticles.map((article, index) => (
-            <ArticlePreviewCard 
-                article={article}
-                key={index}
-                articleData={article}
-                handleClick={() => handleClick(article.id)}
-                />))}
-        </div>)
-
+        <section>
+            <Outlet />
+            <Link 
+                to="/articles"
+                >
+                <h1 className="siteTitle">All Articles</h1>
+            </Link>
+            <div className="previewGalary">
+                {allArticles.map((article, index) => (
+                    <ArticlePreviewCard 
+                        article={article}
+                        key={index}
+                        articleData={article}
+                        handleClick={() => handleClick(article.id)}
+                        />))}
+            </div>
+        </section>)
 }

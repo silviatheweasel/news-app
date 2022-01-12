@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 
-import { selectCurrentComments, loadComments, sendComment } from "./currentCommentsSlice";
+import { selectCurrentComments, loadComments, sendComment, selectCurrentReactions } from "./currentCommentsSlice";
 import { selectCurrentArticle } from "../currentArticle/currentArticleSlice";
 
 import { CommentList } from "../../components/CommentList";
@@ -9,20 +9,23 @@ import { CommentForm } from "../../components/CommentForm";
 
 export const CurrentComments = () => {
     const currentComments = useSelector(selectCurrentComments);
-    const currentArticle = useSelector(selectCurrentArticle)
+    const currentArticle = useSelector(selectCurrentArticle);
+    const currentReactions = useSelector(selectCurrentReactions);
+
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        if (currentArticle) {
-            const fetchData = setInterval(() => dispatch(loadComments(currentArticle.id)), 2000);
-            return () => clearInterval(fetchData);
-        }
-    }, [currentArticle, dispatch]);
+    // useEffect(() => {
+    //     if (currentArticle) {
+    //         const fetchData = setInterval(() => dispatch(loadComments(currentArticle.id)), 5000);
+    //         return () => clearInterval(fetchData);
+    //     }
+    // }, [currentArticle, dispatch]);
 
     const [input, setInput] = useState({comment: "", userName: "", articleId: ""});
 
     const handleInputChange = ({target}) => {
         setInput((prev) => ({ ...prev, [target.name]: target.value}));
+        setShowWarning(false);
     }
 
     useEffect(() => {
@@ -31,10 +34,19 @@ export const CurrentComments = () => {
         }
     }, [currentArticle]);
 
+    const [showWarning, setShowWarning] = useState(false);
+
     const handleSubmit = (event) => {
         event.preventDefault();
-        dispatch(sendComment(input));
-        setInput({comment: "", userName: "", articleId: currentArticle.id});
+        if (input.comment && input.userName) {
+            dispatch(sendComment(input));
+            setTimeout(() => {
+                dispatch(loadComments(currentArticle.id))
+            }, 500);
+            setInput({comment: "", userName: "", articleId: currentArticle.id});
+        } else {
+            setShowWarning(true);
+        }
     }
 
     if (!currentArticle) {
@@ -45,11 +57,14 @@ export const CurrentComments = () => {
     <div className="commentSection">
         <CommentList 
             comments={currentComments} 
-            />
+            reactions={currentReactions}
+            >
+        </CommentList>
         <CommentForm 
             handleInputChange={handleInputChange}
             handleSubmit={handleSubmit}
             input={input}
+            showWarning={showWarning}
             />
     </div>)
 }

@@ -1,7 +1,7 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
-import { selectCurrentArticle, loadCurrentArticle } from "./currentArticleSlice";
-import { loadComments } from "../currentComments/currentCommentsSlice";
+import { selectCurrentArticle } from "./currentArticleSlice";
 import { FullArticle } from "../../components/FullArticle";
 import { selectAllArticles } from "../articlePreviews/articlePreviewsSlice";
 
@@ -10,12 +10,6 @@ export const CurrentArticle = () => {
     const allArticles = useSelector(selectAllArticles);
 
     // const isLoading = useSelector(selectIsArticleLoading);
-    const dispatch = useDispatch();
-
-    const handleClick = (id) => {
-        dispatch(loadCurrentArticle(id));
-        dispatch(loadComments(id));
-    }
 
     // if (isLoading) {
     //     return (<div className="articlePlaceHolder"></div>);
@@ -23,26 +17,26 @@ export const CurrentArticle = () => {
     //     return null;
     // }
 
-    return (<div
-        className="fullArticleWrapper"
-    >
-        {(currentArticle && currentArticle.id > 1) && 
-        <button
-            onClick={() => handleClick(parseInt(currentArticle.id) - 1)}
-            className="navBtn prevBtn"
-                >Last
-        </button>}
-        {/* {isLoading && <div className="articlePlaceHolder"></div>} */}
-        {currentArticle && <>
-            <FullArticle 
-                article={currentArticle} 
-            />
-            </>}
-        {(currentArticle && currentArticle.id < allArticles.length) && 
-            <button
-                onClick={() => handleClick(parseInt(currentArticle.id) + 1)}
-                className="navBtn nextBtn"
-                    >Next
-            </button>}
-    </div>)
+    return (
+        <div
+            className="fullArticleWrapper"
+            >
+            {(currentArticle && currentArticle.id > 1) && 
+                <Link
+                    className="navBtn prevBtn"
+                    to={`/articles/${parseInt(currentArticle.id) - 1}`}
+                        >Last
+                </Link>}
+                {/* {isLoading && <div className="articlePlaceHolder"></div>} */}
+                {currentArticle && 
+                    <FullArticle 
+                        article={currentArticle} 
+                    />}
+                {(currentArticle && currentArticle.id < allArticles.length) && 
+                    <Link
+                        className="navBtn nextBtn"
+                        to={`/articles/${parseInt(currentArticle.id) + 1}`}
+                            >Next
+                    </Link>}
+        </div>)
 }

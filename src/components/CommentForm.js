@@ -1,4 +1,4 @@
-export const CommentForm = ({ handleInputChange, handleSubmit, input }) => {
+export const CommentForm = ({ handleInputChange, handleSubmit, input, showWarning }) => {
 
     return (
         <form className="commentForm">
@@ -9,7 +9,11 @@ export const CommentForm = ({ handleInputChange, handleSubmit, input }) => {
                 className="commentInput"
                 name="comment"
                 value={input.comment}
+                autoComplete="off"
                 onChange={handleInputChange}
+                style={{
+                    borderColor: showWarning ? "red" : "black"
+                }}
                 >
             </input>
             <input
@@ -17,8 +21,12 @@ export const CommentForm = ({ handleInputChange, handleSubmit, input }) => {
                 placeholder="Your name"
                 className="commentInput"
                 name="userName"
+                autoComplete="off"
                 value={input.userName}
                 onChange={handleInputChange}
+                style={{
+                    borderColor: showWarning ? "red" : "black"
+                }}
             ></input>
             <input 
                 type="submit"
@@ -27,5 +35,9 @@ export const CommentForm = ({ handleInputChange, handleSubmit, input }) => {
                 onClick={handleSubmit}
             >
             </input>
+            {showWarning && <p 
+                className="warningMsg"
+                >Please leave your comment and name before submission.
+                </p>}
         </form>)
 }

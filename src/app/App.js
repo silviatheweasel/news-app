@@ -1,18 +1,26 @@
+import { 
+  BrowserRouter as Router, 
+  Route, 
+  Routes,
+  Navigate 
+} from "react-router-dom";
+
 import './App.css';
 import { ArticlePreviews } from "../features/articlePreviews/ArticlePreviews";
-import { CurrentArticle } from "../features/currentArticle/CurrentArticle";
-import { CurrentComments } from "../features/currentComments/CurrentComments";
+import { ArticleAndComments } from '../containers/ArticleAndComments';
 
 function App() {
   return (
-    <div className="App">
-      <div className="currenArticleWrapper">
-        <CurrentArticle />
-        <CurrentComments />
-      </div>
-      <h1>All Articles</h1>
-      <ArticlePreviews />
-    </div>
+    <Router>
+      <main className="App">
+      <Routes>
+        <Route path="/" element = {<Navigate replace to ="/articles" />}/>
+        <Route path="/articles" element ={<ArticlePreviews />}>
+          <Route path=":id" element={<ArticleAndComments/>} />
+        </Route>
+      </Routes>
+      </main>
+    </Router>
   );
 }
 
