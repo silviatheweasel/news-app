@@ -1,7 +1,7 @@
 export const CommentReactions = ({ reactionByComment, comment, updateReaction }) => {
 
-    let likeCount;
-    let dislikeCount;
+    let likeCount = 0;
+    let dislikeCount = 0;
     if (reactionByComment) {
         likeCount = reactionByComment.like;
         dislikeCount = reactionByComment.dislike;
