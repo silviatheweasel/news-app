@@ -1,6 +1,6 @@
-/* * {
-  border: 1px solid red;
-} */
+html {
+  scroll-behavior: smooth;
+}
 
 .App {
   width: 100%;
@@ -32,7 +32,7 @@ a {
 }
 
 .previewGalary {
-  width: 60%;
+  width: 80%;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   margin: 0 auto;
