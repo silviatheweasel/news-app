@@ -1,4 +1,4 @@
-export const CommentReactions = ({ reactionByComment, comment, updateReaction }) => {
+export const CommentReactions = ({ reactionByComment, commentId, articleId, updateReaction }) => {
 
     let likeCount = 0;
     let dislikeCount = 0;
@@ -9,8 +9,8 @@ export const CommentReactions = ({ reactionByComment, comment, updateReaction })
 
     const handleReactionClick = ({ target }) => {
         const payload = {
-            commentId: comment.commentId,
-            articleId: comment.articleId,
+            commentId: commentId,
+            articleId: articleId,
             reaction: target.id
         };
         updateReaction(payload);

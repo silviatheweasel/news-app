@@ -87,7 +87,7 @@ export const currentCommentsSlice = createSlice({
     name: "currentComments",
     initialState: {
         comments: [],
-        reactions: null,
+        reactions: {},
         isLoading: false,
         hasErrorLoading: false,
         createCommentIsPending: false,

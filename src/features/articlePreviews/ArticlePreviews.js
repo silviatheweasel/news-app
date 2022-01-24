@@ -5,7 +5,7 @@ import { Outlet, Link } from 'react-router-dom';
 import { loadArticlePreviews, selectAllArticles, selectIsLoading } from "./articlePreviewsSlice"; 
 import { ArticlePreviewCard } from '../../components/ArticlePreviewCard';
 import { loadCurrentArticle } from '../currentArticle/currentArticleSlice';
-import { loadComments } from '../currentComments/currentCommentsSlice';
+import { loadComments, loadReactions } from '../currentComments/currentCommentsSlice';
 
 export const ArticlePreviews = () => {
     const allArticles = useSelector(selectAllArticles);
@@ -14,9 +14,10 @@ export const ArticlePreviews = () => {
 
     useEffect(() => dispatch(loadArticlePreviews()), [dispatch]);
 
-    const handleClick = (id) => {
-        dispatch(loadCurrentArticle(id));
-        dispatch(loadComments(id));
+    const handleClick = (articleId) => {
+        dispatch(loadCurrentArticle(articleId));
+        dispatch(loadComments(articleId));
+        dispatch(loadReactions(articleId));
         window.scrollTo(0,0);
     }
 

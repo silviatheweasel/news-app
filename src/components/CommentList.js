@@ -33,7 +33,8 @@ export const CommentList = ({comments, reactions }) => {
                             </span>
                             <CommentReactions 
                                 reactionByComment={reactions[comment.commentId]}
-                                comment={comment}
+                                commentId={comment.commentId}
+                                articleId={comment.articleId}
                                 updateReaction={updateReaction}
                                 />
                         </div>
