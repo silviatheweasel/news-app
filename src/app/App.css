@@ -1,5 +1,6 @@
 html {
   scroll-behavior: smooth;
+  background-color: #f4e1e1;
 }
 
 .App {
@@ -189,20 +190,32 @@ a {
   font-size: 1.3em;
 }
 
+.commentForm__Inputs {
+  width: 100%;
+}
+
+.textInputs {
+  display: inline-flex;
+  flex-direction: row;
+  width: 80%;
+  justify-content: space-between;
+}
+
 .commentInput {
   border: 1px solid #151d3a;
   border-radius: 4px;
   font-size: 16px;
   padding: 8px;
-  margin-right: 20px;
 }
 
 .commentInput[name="comment"] {
-  width: 60%;
+  flex: 2;
+  margin-right: 20px;
 }
 
 .submitBtn {
   padding: 9px 20px;
+  float: right;
   color: white;
   background-color: #151d3a;
   border: none;
@@ -238,51 +251,76 @@ a {
   .fullArticleInnerWrapper {
     width: 100%;
   }
+
   .previewGalary, .commentsWrapper, .commentForm {
     width: 95%;
   }
+
   .fullArticleTextWrapper {
     width: 95%;
     margin: 0 auto;
   }
-  .commentInput[name="comment"] {
-    width: 50%;
-  }
+
   .navBtn {
     top: 20vh;
   }
+
   .prevBtn {
     padding: 30px 30px 30px 10px;
     border-radius: 0 50px 50px 0;
   }
+
   .nextBtn {
     padding: 30px 10px 30px 30px;
     border-radius: 50px 0 0 50px;
   }
 }
 
-@media only screen and (max-width: 390px) {
+@media only screen and (max-width: 480px) {
   .fullArticleWrapper {
     height: 700px;
   }
+
+  .fullArticleTitle, .previewTitle {
+    font-size: 26px;
+    margin-top: 0;
+  }
+
   .articleCard {
     min-height: 320px;
   }
+
   .navBtn {
     display: none;
   }
   .commentInput[name="comment"] {
     width: 95%;
-    margin-right: 0;
     margin-bottom: 20px;
   }
+
+  .submitBtn {
+    position: relative;
+    bottom: 36px;
+  }
+
+  .textInputs {
+    width: 100%;
+    display: block;
+  }
+
+  .fullArticleText, .previewCopy {
+    font-size: 16px;
+  }
+
   .fullArticleImg {
     object-fit: contain;
     height: auto !important;
   }
+
   .fullArticleWrapper {
     height: auto !important;
   }
+
   .timeStamp, .reactionsWrapper {
     margin-left: 50px;
   }
